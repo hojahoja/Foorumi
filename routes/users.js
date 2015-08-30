@@ -30,7 +30,6 @@ router.post('/authenticate', function(req, res, next){
     if (userToCheck == null || userToCheck.username == null || userToCheck.password == null) {
         res.send(403);
     }
-
     Models.User.findOne({
        where: {
            username: userToCheck.username,
@@ -39,7 +38,7 @@ router.post('/authenticate', function(req, res, next){
     }).then(function (user) {
         if (user) {
             req.session.userId = user.id;
-            req.json(user);
+            res.json(user);
         } else {
             res.send(403);
         }

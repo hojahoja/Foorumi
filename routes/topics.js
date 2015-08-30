@@ -55,7 +55,7 @@ router.post('/:id/message', authentication, function(req, res, next) {
     messageToAdd.UserId = req.session.userId;
     Models.Message.create(messageToAdd).then(function (message) {
         res.json(message);
-    })
+    });
 });
 
 module.exports = router;
